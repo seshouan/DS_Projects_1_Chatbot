@@ -9,6 +9,10 @@ from nltk.stem import WordNetLemmatizer
 import json
 import pickle
 
+# import nltk resources
+nltk.download('punkt_tab')
+nltk.download('wordnet')
+
 # read in a json file
 lemmatizer = WordNetLemmatizer()
 intents_file = open('intents.json').read()
@@ -61,7 +65,7 @@ for doc in documents:
     # init a bag of words
     bag = []
     # get the list of tokenized words for the pattern
-    word_pattern = doc[0]
+    word_patterns = doc[0]
     # lemmatize each word
     word_patterns = [lemmatizer.lemmatize(word.lower()) for word in word_patterns]
     # flag words that appear in the current pattern as 1s the rest as 0s
@@ -74,7 +78,7 @@ for doc in documents:
     training.append([bag, output_row])
 # shuffle the training set and turn it to a numpy array
 random.shuffle(training)
-training = np.array(training)
+training = np.array(training, dtype=object)
 # create training inputs (patterns) and label (intent) sets
 train_X = list(training[:,0])
 train_y = list(training[:,1])
