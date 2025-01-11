@@ -13,6 +13,7 @@ import pickle
 # import nltk resources
 nltk.download('punkt_tab')
 nltk.download('wordnet')
+nltk.download('punkt')
 
 # read in a json file
 lemmatizer = WordNetLemmatizer()
