@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 
 from tensorflow.keras.models import load_model
-model = load_model('chatbot_model.h5')
+model = load_model('chatbot_model.keras')
 import json
 import random
 intents = json.loads(open('intents.json').read())
@@ -78,7 +78,8 @@ def send():
 
 root = Tk()
 root.title('Chatbot')
-root.geometry(width=False, height=False)
+root.geometry('400x500')
+root.resizable(width=False, height=False)
 
 # create chat window
 ChatBox = Text(root, bd=0, bg='white', height='8', width='50', font='Arial',)
@@ -93,8 +94,8 @@ ChatBox['yscrollcommand'] = scrollbar.set
 SendButton = Button(root, font=('Verdana', 12, 'bold'), text='Send', width='12', height='5', bd=0, bg='#f9a602', activebackground='#3c9d9b', fg='#000000', command=send)
 
 # create an input box
-EntryBox = Text(root, bd=0, bg='white', width='29', height='5', font='Arial')
-#EntryBox.bind('<Return>', send)
+EntryBox = Text(root, bd=0, bg='white', width='29', height='5', font='Arial', fg='#000000')
+# EntryBox.bind('<Return>', send)
 
 # arrange all components
 scrollbar.place(x=376, y=6, height=386)
