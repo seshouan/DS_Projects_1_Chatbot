@@ -1,3 +1,0 @@
-{
-  "python.analysis.extraPaths": ["./path_to_your_site_packages"]
-}
